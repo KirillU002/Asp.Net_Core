@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.MyStyle {
+    color: red;
+    font-size: 34px;
+}

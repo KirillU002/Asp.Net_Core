@@ -6,16 +6,17 @@ namespace OnlineShopWebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ProductRepository productRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+            productRepository = new ProductRepository();
         }
-
         public IActionResult Index()
         {
-            return View();
+            var products = productRepository.GetAll();
+            
+            return View(products);
         }
 
         public IActionResult Privacy()
