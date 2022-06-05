@@ -5,19 +5,16 @@ namespace OnlineShopWebApplication.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductRepository productRepository;
+        private readonly IProductsRepository productRepository;
 
-        public ProductController()
+        public ProductController(IProductsRepository productRepository)
         {
-            productRepository = new ProductRepository();
+            this.productRepository = productRepository;
         }
-        public string Index(int id)
+        public IActionResult Index(int id)
         {
             var product = productRepository.TryGetById(id);
-
-            if(product == null)
-                return $"Продукта с id={id} не существует!";
-            return $"{product}\n{product.Description}";
+            return View(product);
         }        
     }    
 }

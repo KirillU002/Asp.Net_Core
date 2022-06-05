@@ -1,5 +1,9 @@
+using OnlineShopWebApplication;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>();
+builder.Services.AddSingleton<ICartsRepository, CartsInMemoryRepository>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
